@@ -142,7 +142,7 @@ val_features, val_targets = features[-60*24:], targets[-60*24:]
 # 
 #   
 
-# In[96]:
+# In[9]:
 
 
 class NeuralNetwork(object):
@@ -264,7 +264,7 @@ class NeuralNetwork(object):
         return final_outputs
 
 
-# In[87]:
+# In[10]:
 
 
 def MSE(y, Y):
@@ -275,7 +275,7 @@ def MSE(y, Y):
 # 
 # 运行这些单元测试，检查你的网络实现是否正确。这样可以帮助你确保网络已正确实现，然后再开始训练网络。这些测试必须成功才能通过此项目。
 
-# In[98]:
+# In[11]:
 
 
 import unittest
@@ -368,13 +368,13 @@ unittest.TextTestRunner().run(suite)
 # 
 # 隐藏节点越多，模型的预测结果就越准确。尝试不同的隐藏节点的数量，看看对性能有何影响。你可以查看损失字典，寻找网络性能指标。如果隐藏单元的数量太少，那么模型就没有足够的空间进行学习，如果太多，则学习方向就有太多的选择。选择隐藏单元数量的技巧在于找到合适的平衡点。
 
-# In[131]:
+# In[18]:
 
 
 import sys
 
 ### Set the hyperparameters here ###
-iterations = 280
+iterations = 2100
 learning_rate = 1
 hidden_nodes = 10
 output_nodes = 1
@@ -400,7 +400,7 @@ for ii in range(iterations):
     losses['validation'].append(val_loss)
 
 
-# In[132]:
+# In[19]:
 
 
 plt.plot(losses['train'], label='Training loss')
@@ -413,7 +413,7 @@ _ = plt.ylim()
 # 
 # 使用测试数据看看网络对数据建模的效果如何。如果完全错了，请确保网络中的每步都正确实现。
 
-# In[133]:
+# In[17]:
 
 
 fig, ax = plt.subplots(figsize=(8,4))
@@ -441,7 +441,5 @@ _ = ax.set_xticklabels(dates[12::24], rotation=45)
 # #### 请将你的答案填写在下方
 # 
 # 我对这个项目有几个自己的疑问：
-# * 我一开始在**构建网络**这一块卡了很久，因为我得计算一下每个矩阵/向量的维度，然后保证它们能够相乘，我觉得这个地方好麻烦，就是矩阵和向量乘 / 向量和向量乘 / 矩阵和矩阵乘， 它们都得保证维度的相同。 （我在构建网络代码中加了很多print语句，现在已经注释掉了，就是为了能够看清楚它们之间的shape，所以想问一下Reviwer有没有好的方法呢？ 感觉自己算着算着就晕了= =）
-# * 其次就是在Numpy中它们的运算是用乘号呢 ，还是用dot，这一块还不是理得很清楚。
-# * 还有就是训练网络这块，到底怎么样才算是一个好的神经网络？是指Training Loss和Validation Loss都比较小的吗？
-# * 还有我对最后这一块的调参不是很会，希望老师能够指教一下！
+# * 哇 提高迭代次数确实能够让模型收敛哎！
+# * 对于调参的知识还不太会= = 希望Reviwer能够提供一些资料:)
